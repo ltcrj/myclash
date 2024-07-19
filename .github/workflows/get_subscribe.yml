@@ -32,11 +32,9 @@ jobs:
         ls -al
     - name: push generated file to repository
       run: |
-        handle_error1(){git config --global user.email "workerusers.noreply.github.com"}
-        handle_error2(){git config --global user.name "clash worker"}
-        trap handle_error1 ERR
+        git config --global user.email "workerusers.noreply.github.com"
+        git config --global user.name "clash worker"
         git config --global user.email
-        trap handle_error2 ERR
         git config --global user.name
         git add myclash.yaml
         git commit -m "add myclash.yaml"
