@@ -53,6 +53,8 @@ jobs:
         git init
         git remote add origin git@gitee.com:xnysh/myclash.git
         mv ../myclash/myclash/myclash.yaml .
+        pwd
+        ls -al
         git add myclash.yaml
         git commit -m 'update myclash.yaml'
         git remote add origin https://$U:$P@gitee.com/$U/myclash.git
