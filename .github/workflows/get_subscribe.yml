@@ -56,4 +56,4 @@ jobs:
         git add myclash.yaml
         git commit -m 'update myclash.yaml'
         git remote add origin https://$U:$P@gitee.com/$U/myclash.git
-        git push -u origin master
+        git push
