@@ -32,6 +32,10 @@ jobs:
         ls -al
     - name: push generated file to repository
       run: |
+        git config --global user.email
+        if [ `echo $?` -ge 1 ];then git config --global user.email "workerusers.noreply.github.com"; fi
+        git config --global user.name
+        if [ `echo $?` -ge 1 ];then git config --global user.name "clash worker"; fi
         git add myclash.yaml
         git commit -m "add myclash.yaml"
         git push https://x-access-token:${{ secrets.TOKEN }}@github.com/${{ github.repository }}
