@@ -16,6 +16,8 @@ jobs:
     env:
       TZ: Asia/Shanghai
     steps:
+    - name: read repository
+      uses: actions/checkout@v4
     - name: install dependencies
       run: |
         python -m pip install --upgrade pip
