@@ -32,7 +32,7 @@ jobs:
         ls -al
     - name: push generated file to repository
       run: |
-        if [ -f myclash.yaml ]; then git rm myclash.yaml; fi
+        if [ -e myclash.yaml ]; then rm myclash.yaml; fi
         git config --global user.email "workerusers.noreply.github.com"
         git config --global user.name "clash worker"
         git config --global user.email
