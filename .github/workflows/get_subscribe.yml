@@ -25,3 +25,7 @@ jobs:
     - name: run main
       run: |
         python main.py
+    - name: print pwd and ls -al
+      run: |
+        pwd
+        ls -al
