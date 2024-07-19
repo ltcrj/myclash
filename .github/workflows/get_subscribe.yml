@@ -41,10 +41,10 @@ jobs:
         git config --global user.name
         git add myclash.yaml
         git commit -m "add myclash.yaml"
+        git remote set-url origin https://github.com/ltcrj/myclash.git
         git push https://x-access-token:${{ secrets.TOKEN }}@github.com/${{ github.repository }}
         U=${{ secrets.GITEE_NAME }}
         P=${{ secrets.GITEE_P }}
-        T=${{ secrets.TEST_V }}
     - name: push myclash.yaml to gitee
       # /home/runner/work/myclash/myclash
       run: |
