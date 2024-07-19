@@ -27,8 +27,8 @@ jobs:
       run: |
         git rm myclash.yaml
         python main.py
-        echo "date: " >> myclash.yaml
-        echo "`date`\n" >> myclash.yaml
+        echo "date: `date`" >> myclash.yaml
+        cat tmp.yaml >> myclash.yaml
     - name: print pwd and ls -al
       run: |
         pwd
