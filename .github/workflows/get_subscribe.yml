@@ -11,21 +11,15 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  pyinstaller-build:
     runs-on: ubuntu-latest
     env:
       TZ: Asia/Shanghai
     steps:
-#    - uses: actions/checkout@v3
     - name: Set up Python 3.12
-      uses: actions/setup-python@v3
+      uses: sayyid5416/pyinstaller@v1
       with:
         python-version: "3.12"
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        if [-f requirements.txt]; then pip install -r requirements.txt;fi
-    - name: Run main app
-      run: |
-        python main.py
-    
+        spec: 'main.py'
+        upload_exe_with_name: 'main'
+        options: --onefile, --name "main", windowed
