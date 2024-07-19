@@ -43,7 +43,8 @@ jobs:
         git commit -m "add myclash.yaml"
         git push https://x-access-token:${{ secrets.TOKEN }}@github.com/${{ github.repository }}
         U=${{ secrets.GITEE_NAME }}
-        P=${{ secrets.GITEE_P}}
+        P=${{ secrets.GITEE_P }}
+        T=${{ secrets.TEST_V }}
     - name: push myclash.yaml to gitee
       # /home/runner/work/myclash/myclash
       run: |
@@ -53,6 +54,7 @@ jobs:
         git init
         git remote add origin git@gitee.com:xnysh/myclash.git
         mv ../myclash/myclash/myclash.yaml .
+        echo $T
         pwd
         ls -al
         git add myclash.yaml
