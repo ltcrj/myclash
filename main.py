@@ -16,8 +16,8 @@ if tail_url:
     sub_url = sub_et.xpath('//pre[1]/code/text()')[0] or None
     if sub_url:
         result = requests.get(sub_url)
-        with open('./myclash.yaml', 'wb') as f:
+        with open('./tmp.yaml', 'wb') as f:
             f.write(result.content)
     else:
-        with open('./myclash.yaml', 'w', encoding='utf-8') as f:
+        with open('./tmp.yaml', 'w', encoding='utf-8') as f:
             f.write('error: do not get any information')
