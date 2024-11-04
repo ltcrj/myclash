@@ -13,7 +13,7 @@ if tail_url:
     full_url = urljoin(url, tail_url)
     sub_res = requests.get(full_url)
     sub_et = etree.HTML(sub_res.text)
-    sub_url = sub_et.xpath('//pre[1]/code/text()')[0] or None
+    sub_url = sub_et.xpath('//pre[1]/code/text()')[0].strip() or None
     if sub_url:
         result = requests.get(sub_url)
         with open('./tmp.yaml', 'wb') as f:
