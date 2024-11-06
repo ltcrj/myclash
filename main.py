@@ -6,11 +6,9 @@ import yaml
 def remove_ss_type_entries(yaml_text):
     # 将 YAML 格式的文本加载为 Python 对象
     data = yaml.safe_load(yaml_text)
-
     # 过滤掉包含 "type: ss" 的代理条目
     if "proxies" in data:
         data["proxies"] = [proxy for proxy in data["proxies"] if proxy.get("type") != "ss"]
-
     # 将过滤后的数据转换回 YAML 格式文本
     return yaml.safe_dump(data, allow_unicode=True)
 
