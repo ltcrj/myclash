@@ -1,5 +1,18 @@
 import requests
 from lxml import etree
+import yaml
+
+
+def remove_ss_type_entries(yaml_text):
+    # 将 YAML 格式的文本加载为 Python 对象
+    data = yaml.safe_load(yaml_text)
+
+    # 过滤掉包含 "type: ss" 的代理条目
+    if "proxies" in data:
+        data["proxies"] = [proxy for proxy in data["proxies"] if proxy.get("type") != "ss"]
+
+    # 将过滤后的数据转换回 YAML 格式文本
+    return yaml.safe_dump(data, allow_unicode=True)
 
 url = r'https://clashgithub.com/'
 headers = {
@@ -17,8 +30,11 @@ if detail_urls:
     final_url = detail_et.xpath('//p[strong="clash订阅链接:"]/following-sibling::p[1]/text()')[0] or None
     if final_url:
         clash_detail = requests.get(url=final_url, headers=headers)
-        with open('./tmp.yaml', 'wb') as f:
-            f.write(clash_detail.content)
+        result = remove_ss_type_entries(clash_detail.text)
+        with open('./tmp.yaml', 'w') as f:
+            f.write(result)
     else:
         with open('./tmp.yaml', 'w', encoding='utf-8') as f:
             f.write('error: do not get any information')
+
+
