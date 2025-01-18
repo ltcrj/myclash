@@ -40,5 +40,6 @@ jobs:
         git config --global user.email
         git config --global user.name
         git add myclash.yaml
-        git commit -m "add myclash.yaml"
+        current_datetime=$(date '+%Y-%m-%d %H:%M:%S')
+        git commit -m "add myclash.yaml $current_datetime"
         git push https://x-access-token:${{ secrets.TOKEN }}@github.com/${{ github.repository }}
